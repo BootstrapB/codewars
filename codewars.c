@@ -2,35 +2,24 @@
 #include <stdio.h>
 #include <string.h>
 
-bool xo(const char* str)
+int lostSheep(const int *friday,const int* saturday, int total)
 {
-    int numx = 0;
-    int numo = 0;
-    while(*str)
+    int totalsheep = 0;
+    while(*friday)
     {
-        if(*str=='x')
-        {
-            ++numx;
-        }
-        if(*str=='o')
-        {
-            ++numo;
-        }
-        ++str;
+        totalsheep+=*friday;
+        ++friday;
     }
-    if(numx==numo)
+    while(*saturday)
     {
-        return true;
+        totalsheep+=*saturday;
+        ++saturday;
     }
-    else
-    {
-        return false;
-    }
+    return total-totalsheep;
 }
-
 int main()
 {
-    bool test = xo("xooxx");
+    int test = lostSheep({1,2,0},{3,4,0},15);
     printf("%i\n",test);
 
     return 0;
