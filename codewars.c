@@ -1,26 +1,31 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-int lostSheep(const int *friday,const int* saturday, int total)
+char* replaceNth(const char* text, int n, char oldValue, char newValue)
 {
-    int totalsheep = 0;
-    while(*friday)
+    int count = 1;
+    char *answerstr = malloc(strlen(text)*sizeof(char));
+    char *ptr = answerstr;
+    strcpy(answerstr,text);
+    while(*answerstr)
     {
-        totalsheep+=*friday;
-        ++friday;
+        if(*answerstr==oldValue && !(count%n))
+        {
+            *answerstr=newValue;
+        }
+        ++count;
+        ++answerstr;
     }
-    while(*saturday)
-    {
-        totalsheep+=*saturday;
-        ++saturday;
-    }
-    return total-totalsheep;
+    return ptr;
 }
+
+
 int main()
 {
-    int test = lostSheep({1,2,0},{3,4,0},15);
-    printf("%i\n",test);
-
+    char* test = replaceNth("Vader said: No, I am your father!",2,'a','o');
+    printf("%s\n",test);
+    free(test);
     return 0;
 }
