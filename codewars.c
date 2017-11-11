@@ -5,17 +5,20 @@
 
 char* replaceNth(const char* text, int n, char oldValue, char newValue)
 {
-    int count = 1;
+    int count = 0;
     char *answerstr = malloc(strlen(text)*sizeof(char));
     char *ptr = answerstr;
     strcpy(answerstr,text);
     while(*answerstr)
     {
-        if(*answerstr==oldValue && !(count%n))
+        if(*answerstr==oldValue)
         {
-            *answerstr=newValue;
+            ++count;
+            if(!(count%n))
+            {
+                *answerstr=newValue;
+            }
         }
-        ++count;
         ++answerstr;
     }
     return ptr;
