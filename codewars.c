@@ -8,6 +8,7 @@ char* replaceNth(const char* text, int n, char oldValue, char newValue)
     int count = 0;
     char *answerstr = malloc(strlen(text)*sizeof(char));
     char *ptr = answerstr;
+    //char *answerstr = text;
     strcpy(answerstr,text);
     while(*answerstr)
     {
